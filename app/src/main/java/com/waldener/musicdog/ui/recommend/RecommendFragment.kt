@@ -41,5 +41,7 @@ class RecommendFragment : Fragment() {
             viewModel.getRecommendList()
         }
 
+        viewModel.getRecommendList()
+
     }
 }

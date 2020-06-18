@@ -24,6 +24,7 @@ class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.RecommendViewHold
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
         val searchResult = list[position]
         holder.itemView.tv_title.text = searchResult.snippet?.title
+        holder.itemView.tv_channel.text = searchResult.snippet?.channelTitle
         Glide.with(holder.itemView).load(searchResult.snippet.thumbnails.high.url).into(holder.itemView.iv_thumbnail)
     }
 

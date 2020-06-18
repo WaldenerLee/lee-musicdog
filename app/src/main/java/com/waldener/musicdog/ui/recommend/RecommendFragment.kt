@@ -37,6 +37,9 @@ class RecommendFragment : Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.adapter = adapter
 
-        viewModel.getRecommendList()
+        fab.setOnClickListener {
+            viewModel.getRecommendList()
+        }
+
     }
 }

@@ -5,9 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.waldener.musicdog.R
+import com.waldener.musicdog.room.AppDatabase
+import kotlinx.android.synthetic.main.fragment_recent.*
 
 class RecentFragment : Fragment() {
+
+    private val adapter = RecentAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,5 +21,17 @@ class RecentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_recent, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.adapter = adapter
+
+        val recordDao = AppDatabase.INSTANCE?.recordDao()
+        recordDao?.getAll()?.observe(viewLifecycleOwner, Observer {
+            adapter.update(it)
+        })
     }
 }

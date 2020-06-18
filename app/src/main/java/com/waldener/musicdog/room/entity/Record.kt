@@ -5,8 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "record")
-data class Record(
-    @PrimaryKey val id: Long,
-    @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "time") val time: Long?
-)
+class Record(
+    @ColumnInfo(name = "title") val title: String?
+) {
+    @PrimaryKey(autoGenerate = true) var id: Long = 0
+    @ColumnInfo(name = "time") var time: Long = System.nanoTime()
+}

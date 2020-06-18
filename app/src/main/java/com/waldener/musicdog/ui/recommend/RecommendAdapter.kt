@@ -1,4 +1,4 @@
-package com.waldener.musicdog.ui.recent
+package com.waldener.musicdog.ui.recommend
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +8,19 @@ import com.waldener.musicdog.R
 import com.waldener.musicdog.room.entity.RecordVideo
 import kotlinx.android.synthetic.main.item_video.view.*
 
-class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
+class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder>() {
     private val list : MutableList<RecordVideo> = arrayListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
         val contentView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_video, parent, false)
-        return RecentViewHolder(contentView)
+        return RecommendViewHolder(contentView)
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    override fun onBindViewHolder(holder: RecentViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
         val record = list[position]
         holder.itemView.tv_title.text = record.title
     }
@@ -33,5 +33,5 @@ class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class RecentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class RecommendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.waldener.musicdog.R
-import com.waldener.musicdog.room.entity.Record
+import com.waldener.musicdog.room.entity.RecordVideo
 import kotlinx.android.synthetic.main.fragment_recent.*
 
 class RecentFragment : Fragment() {
@@ -39,7 +39,7 @@ class RecentFragment : Fragment() {
         })
 
         fab.setOnClickListener {
-            viewModel.insert(Record("xxx"))
+            viewModel.insert(RecordVideo("xxx"))
         }
 
     }

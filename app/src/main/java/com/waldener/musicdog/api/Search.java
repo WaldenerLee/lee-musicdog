@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.waldener.musicdog.data;
+package com.waldener.musicdog.api;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;

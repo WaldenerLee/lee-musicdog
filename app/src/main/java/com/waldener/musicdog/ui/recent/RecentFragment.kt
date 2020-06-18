@@ -39,7 +39,7 @@ class RecentFragment : Fragment() {
         })
 
         fab.setOnClickListener {
-            viewModel.insert(Record(1, "002", 0))
+            viewModel.insert(Record(4, "004", 0))
         }
 
     }

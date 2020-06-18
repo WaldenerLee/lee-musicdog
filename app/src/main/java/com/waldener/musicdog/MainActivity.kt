@@ -3,8 +3,7 @@ package com.waldener.musicdog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.waldener.musicdog.data.Search
-import com.waldener.musicdog.ui.home.HomeActivity
+import com.waldener.musicdog.ui.home.HomeOldActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 //            Thread{
 //                Search.search("成龙")
 //            }.start()
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, HomeOldActivity::class.java))
         }
     }
 }

@@ -26,11 +26,11 @@ class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
     }
 
     fun update(list: List<Record>?){
+        this.list.clear()
         list?.let {
-            this.list.clear()
             this.list.addAll(it)
-            notifyDataSetChanged()
         }
+        notifyDataSetChanged()
     }
 
     inner class RecentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

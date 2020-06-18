@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.waldener.musicdog.R
-import com.waldener.musicdog.room.AppDatabase
 import com.waldener.musicdog.room.entity.Record
 import kotlinx.android.synthetic.main.fragment_recent.*
 
 class RecentFragment : Fragment() {
+
+    private val viewModel: RecentVM by lazy {
+        ViewModelProvider(this).get(RecentVM::class.java)
+    }
 
     private val adapter = RecentAdapter()
 
@@ -30,15 +34,13 @@ class RecentFragment : Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.adapter = adapter
 
-        val recordDao = AppDatabase.INSTANCE?.recordDao()
-        recordDao?.getAll()?.observe(viewLifecycleOwner, Observer {
+        viewModel.getRecordLiveData()?.observe(viewLifecycleOwner, Observer {
             adapter.update(it)
         })
 
         fab.setOnClickListener {
-            Thread {
-                recordDao?.insert(Record(0, "001", 0))
-            }.start()
+            viewModel.insert(Record(1, "002", 0))
         }
+
     }
 }

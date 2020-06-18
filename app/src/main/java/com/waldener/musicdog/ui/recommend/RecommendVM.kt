@@ -2,16 +2,17 @@ package com.waldener.musicdog.ui.recommend
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.api.services.youtube.model.SearchListResponse
 import com.waldener.musicdog.api.SearchApi
-import com.waldener.musicdog.room.entity.RecommendVideo
 
 class RecommendVM : ViewModel() {
 
-    internal val recommendLiveData = MutableLiveData<List<RecommendVideo>>()
+    internal val recommendLiveData = MutableLiveData<SearchListResponse?>()
 
     fun getRecommendList() {
         Thread {
-            SearchApi.search("张宇")
+            val searchResponse = SearchApi.search("张宇")
+            recommendLiveData.postValue(searchResponse)
         }.start()
     }
 }

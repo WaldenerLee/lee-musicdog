@@ -31,7 +31,7 @@ class RecommendFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.recommendLiveData.observe(viewLifecycleOwner, Observer {
-
+            adapter.update(it?.items)
         })
 
         recycler_view.layoutManager = LinearLayoutManager(context)
